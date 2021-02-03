@@ -1,0 +1,25 @@
+@import './reset.scss';
+@import './common.scss';
+@font-face {
+  font-family: 'iconfont';  /* project id 2089612 */
+  src: url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.eot');
+  src: url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_2089612_pg6hvh2jrzh.svg#iconfont') format('svg');
+}
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 12px;
+    font-style: normal;
+    padding-right: 5px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .el-checkbox-group{
+    font-size: 14px !important;
+  }
+  .el-checkbox__label{
+    font-size: 0px !important;
+  }
