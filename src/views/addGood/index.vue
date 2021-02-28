@@ -2,43 +2,69 @@
   <div class="box">
     <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
       <el-form-item label="编号">
-        <el-input v-model="formLabelAlign.spec_id" placeholder="关联id" :disabled="true"></el-input>
+        <el-input
+          v-model="formLabelAlign.spec_id"
+          placeholder="关联id"
+          :disabled="true"
+        ></el-input>
       </el-form-item>
       <el-form-item label="商品名字">
         <el-input v-model="formLabelAlign.spu_title" placeholder="商品名字"></el-input>
       </el-form-item>
       <el-form-item label="商品简介">
-        <el-input v-model="formLabelAlign.spu_sub_title" placeholder="商品简介"></el-input>
+        <el-input
+          v-model="formLabelAlign.spu_sub_title"
+          placeholder="商品简介"
+        ></el-input>
       </el-form-item>
       <el-form-item label="活动名称">
-        <el-input v-model="formLabelAlign.spu_sub_title_hover" placeholder="活动名称"></el-input>
+        <el-input
+          v-model="formLabelAlign.spu_sub_title_hover"
+          placeholder="活动名称"
+        ></el-input>
       </el-form-item>
       <el-form-item label="默认显示">
-        <el-input v-model="formLabelAlign.spu_defall_show" placeholder="默认显示"></el-input>
+        <el-input
+          v-model="formLabelAlign.spu_defall_show"
+          placeholder="默认显示"
+        ></el-input>
       </el-form-item>
       <el-form-item label="关键字">
         <el-input v-model="formLabelAlign.search" placeholder="搜索的关键字"></el-input>
       </el-form-item>
       <el-form-item label="价格">
-        <el-input v-model="formLabelAlign.price" placeholder="价格主要用来排序"></el-input>
+        <el-input
+          v-model="formLabelAlign.price"
+          placeholder="价格主要用来排序"
+        ></el-input>
       </el-form-item>
       <el-form-item label="详情图">
         <el-input v-model="formLabelAlign.imglist" placeholder="详情图"></el-input>
       </el-form-item>
       <div class="list_btn">
         <div
-          v-for="(item,index) in list"
+          v-for="(item, index) in list"
           :key="index"
           class="list_btn_item"
-          @click="handeDell(item,index)"
+          @click="handeDell(item, index)"
           @mouseover="handeIndex(index)"
           @mouseout="handeIndex(-1)"
-          :class="{list_btn_item_hover:btnHover === index}"
-        >{{item.color}}</div>
-        <el-button @click="showMask" :type="danger" icon="el-icon-plus">添加分类</el-button>
+          :class="{ list_btn_item_hover: btnHover === index }"
+        >
+          {{ item.color }}
+        </div>
+        <el-button @click="showMask" :type="danger" icon="el-icon-plus"
+          >添加分类</el-button
+        >
       </div>
       <div class="submit_item">
-        <el-button @click="submit" type="primary" icon="el-icon-upload2" style="width:160px">提交</el-button>
+        <el-button
+          @click="submit"
+          type="primary"
+          icon="el-icon-upload2"
+          style="width: 160px"
+          >提交</el-button
+        >
       </div>
     </el-form>
     <div class="mask" v-show="isMask">
@@ -86,7 +112,11 @@
     </div>
     <div class="mask_list" v-show="isMask_list">
       <div class="maskbox">
-        <el-form :label-position="labelPosition" label-width="80px" :model="listdetal_list">
+        <el-form
+          :label-position="labelPosition"
+          label-width="80px"
+          :model="listdetal_list"
+        >
           <el-form-item label="关联id">
             <el-input v-model="listdetal_list.spec_id" :disabled="true"></el-input>
           </el-form-item>
@@ -95,6 +125,9 @@
           </el-form-item>
           <el-form-item label="款式">
             <el-input v-model="listdetal_list.color"></el-input>
+          </el-form-item>
+          <el-form-item label="款式图片">
+            <el-input v-model="listdetal_list.showName"></el-input>
           </el-form-item>
           <el-form-item label="折后价">
             <el-input v-model="listdetal_list.price"></el-input>
@@ -136,23 +169,23 @@ export default {
       isMask: false,
       isMask_list: false,
       delIndex: 0,
-      danger:'',
+      danger: "",
       labelPosition: "right",
       formLabelAlign: {
         spu_title: "",
         spu_sub_title: "",
         spu_sub_title_hover: "",
         spec_id: "",
-        search:'',
+        search: "",
         spu_defall_show: "",
         imglist: "",
-        price:''
+        price: "",
       },
       listdetal: {
         spec_id: "",
         spu_title: "",
         color: "",
-        showName:'',
+        showName: "",
         price: "",
         oldPrice: "",
         img1: "",
@@ -166,7 +199,7 @@ export default {
         spu_title: "",
         color: "",
         price: "",
-        showName:'',
+        showName: "",
         oldPrice: "",
         img1: "",
         img2: "",
@@ -199,7 +232,7 @@ export default {
     async submit() {
       if (this.list.length === 0) {
         this.$Message.error("请添加商品信息");
-        this.danger = 'danger'
+        this.danger = "danger";
         return;
       } else {
         const res = await this.$http.post("/api/addDeta", {
@@ -213,8 +246,7 @@ export default {
             type: "success",
           });
           this.getData();
-          this.danger = ''
-          
+          this.danger = "";
         } else {
           this.$Message.error("提交失败");
         }
@@ -256,14 +288,13 @@ export default {
         this.listdetal[key] = "";
       }
     },
-    handelBlur(e) {
-    },
+    handelBlur(e) {},
     async getData() {
       const res = await this.$http.get("/api/getspecid");
       for (let i in this.formLabelAlign) {
-        this.formLabelAlign[i] = ''
+        this.formLabelAlign[i] = "";
       }
-      this.list = []
+      this.list = [];
       this.formLabelAlign.spec_id = res.data.data + 1;
     },
   },
@@ -330,6 +361,9 @@ export default {
     background-color: #fff;
     padding: 20px 20px;
     border-radius: 4px;
+    form{
+      width: 100%;
+    }
   }
 }
 .mask {
@@ -347,36 +381,49 @@ export default {
     background-color: #fff;
     padding: 20px 20px;
     border-radius: 4px;
+    form{
+      width: 100%;
+    }
   }
 }
-.box::-webkit-scrollbar-thumb:horizontal { /*水平滚动条的样式*/
-      width: 4px;
-      background-color: #CCCCCC;
-      -webkit-border-radius: 6px;
-  }
+.box::-webkit-scrollbar-thumb:horizontal {
+  /*水平滚动条的样式*/
+  width: 4px;
+  background-color: #cccccc;
+  -webkit-border-radius: 6px;
+}
 .box::-webkit-scrollbar-track-piece {
-      background-color: #fff; /*滚动条的背景颜色*/
-      -webkit-border-radius: 0; /*滚动条的圆角宽度*/
- }
+  background-color: #fff; /*滚动条的背景颜色*/
+  -webkit-border-radius: 0; /*滚动条的圆角宽度*/
+}
 .box::-webkit-scrollbar {
-     width: 10px; /*滚动条的宽度*/
-     height: 8px; /*滚动条的高度*/
- }
-.box::-webkit-scrollbar-thumb:vertical { /*垂直滚动条的样式*/
-     height: 50px;
-     background-color: #999;
-     -webkit-border-radius: 4px;
-     outline: 2px solid #fff;
-     outline-offset: -2px;
-     border: 2px solid #fff;
- }
-.box::-webkit-scrollbar-thumb:hover { /*滚动条的hover样式*/
-     height: 50px;
-     -webkit-border-radius: 4px;
- }
+  width: 10px; /*滚动条的宽度*/
+  height: 8px; /*滚动条的高度*/
+}
+.box::-webkit-scrollbar-thumb:vertical {
+  /*垂直滚动条的样式*/
+  height: 50px;
+  background-color: #999;
+  -webkit-border-radius: 4px;
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  border: 2px solid #fff;
+}
+.box::-webkit-scrollbar-thumb:hover {
+  /*滚动条的hover样式*/
+  height: 50px;
+  -webkit-border-radius: 4px;
+}
 .box {
   width: 100%;
+  height: 100%;
   margin: 0 auto;
-  padding:50px 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 100px;
+  form{
+    width: 600px;
+  }
 }
 </style>

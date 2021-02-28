@@ -11,8 +11,8 @@ import { getStore } from "@/utils/storage.js";
 
 import VueClipboard from 'vue-clipboard2' //拷贝剪切版
 Vue.use(VueClipboard)
-// axios.defaults.baseURL = "http://192.168.2.202:3010"
-axios.defaults.baseURL = "https://www.dcmaomi.com:3010"
+axios.defaults.baseURL = "http://192.168.2.202:3010"
+// axios.defaults.baseURL = "https://www.dcmaomi.com:3010"
 Vue.config.productionTip = false
 Vue.use(VueLazyLoad, {
   preLoad: 1.3,

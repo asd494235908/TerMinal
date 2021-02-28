@@ -14,16 +14,8 @@
         >恢复默认</el-button
       >
       <div class="top-left">
-        <el-input
-          placeholder="请输入内容"
-          v-model="input"
-          class="input-with-select"
-        >
-          <el-button
-            slot="append"
-            icon="el-icon-search"
-            @click="handesearch"
-          ></el-button>
+        <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search" @click="handesearch"></el-button>
         </el-input>
       </div>
     </div>
@@ -72,23 +64,14 @@
             v-for="(o, j) in strArr(item.search)"
             :key="j"
           >
-            <el-button size="mini" @click="modifyItme(item, o, j)">{{
-              o
-            }}</el-button>
+            <el-button size="mini" @click="modifyItme(item, o, j)">{{ o }}</el-button>
           </el-tooltip>
-          <el-tooltip
-            effect="dark"
-            content="点击添加"
-            class="item"
-            placement="bottom"
-          >
+          <el-tooltip effect="dark" content="点击添加" class="item" placement="bottom">
             <el-button size="mini" @click="addsearch(item)">添加</el-button>
           </el-tooltip>
         </div>
         <div class="contenner_dec">
-          <el-button type="primary" size="mini" @click="modiufly(item)"
-            >修改</el-button
-          >
+          <el-button type="primary" size="mini" @click="modiufly(item)">修改</el-button>
         </div>
       </div>
     </div>
@@ -107,11 +90,7 @@
       <div class="mask_box">
         <div class="titel" v-show="isAdd === true">添加搜索关键词</div>
         <div class="titel" v-show="isAdd !== true">修改搜索关键词</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="searchArr"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="searchArr">
           <el-form-item label="关键词">
             <el-input v-model="searchArr.val"></el-input>
           </el-form-item>
@@ -128,11 +107,7 @@
     <div class="mask" v-show="listMask">
       <div class="mask_box">
         <div class="titel">修改商品信息</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="searchItem"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="searchItem">
           <el-form-item label="商品名称">
             <el-input v-model="searchItem.spu_title"></el-input>
           </el-form-item>
@@ -140,10 +115,7 @@
             <el-input v-model="searchItem.spu_sub_title"></el-input>
           </el-form-item>
           <el-form-item label="商品价格">
-            <el-input
-              v-model="searchItem.price"
-              placeholder="主要用于排序"
-            ></el-input>
+            <el-input v-model="searchItem.price" placeholder="主要用于排序"></el-input>
           </el-form-item>
           <div class="bntWarp">
             <el-button type="primary" @click="submitItem">提交</el-button>
@@ -290,9 +262,12 @@ export default {
           this.getData();
           this.clersearch();
           this.itemMask = false;
+        } else {
+           this.$Message.error("添加失败");
         }
       } else {
-        this.$Message.error("你没有添加删除权限");
+        this.$Message.error("你没有权限");
+        this.itemMask = false;
       }
     },
     handelsort(id) {
@@ -409,19 +384,26 @@ export default {
 }
 .contenner {
   width: 100%;
+  min-height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid $xt;
   border-left: 1px solid $xt;
+  border-right: 1px solid $xt;
   div {
+    height: 100%;
+  }
+  .contenner_dec,
+  .contenner_blckid,
+  .contenner_name,
+  .contenner_desc,
+  .contenner_price,
+  .contenner_defal {
     width: 160px;
-    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-right: 1px solid $xt;
-    
-
+    // border-right: 1px solid $xt;
     .text {
       display: inline-block;
       width: 150px;
@@ -432,10 +414,11 @@ export default {
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
+    // border-right: 1px solid $xt;
     .item {
-      margin-left: 10px;
-      margin-bottom: 10px;
+      margin: 10px;
     }
   }
 }

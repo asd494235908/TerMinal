@@ -53,6 +53,7 @@ export default {
               const end = new Date();
               const start = new Date();
               start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              end.setTime(start.getTime() + 3600 * 1000 * 24 * 8);
               picker.$emit("pick", [start, end]);
               _this.text = "最近一周";
             },

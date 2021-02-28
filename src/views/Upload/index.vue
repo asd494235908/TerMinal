@@ -24,7 +24,8 @@
 export default {
   data() {
     return {
-      action: "https://www.dcmaomi.com:3010/api/upload",
+      // action: "https://www.dcmaomi.com:3010/api/upload",
+      action: "http://192.168.2.202:3010/api/upload",
       load: null,
       timer: null,
       uptimer: null,

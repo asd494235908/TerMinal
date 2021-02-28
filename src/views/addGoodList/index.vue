@@ -14,16 +14,8 @@
         >恢复默认</el-button
       >
       <div class="top-left">
-        <el-input
-          placeholder="请输入内容"
-          v-model="input"
-          class="input-with-select"
-        >
-          <el-button
-            slot="append"
-            icon="el-icon-search"
-            @click="handesearch"
-          ></el-button>
+        <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
+          <el-button slot="append" icon="el-icon-search" @click="handesearch"></el-button>
         </el-input>
       </div>
 
@@ -71,11 +63,7 @@
       <div style="width: 200px">操作</div>
     </div>
     <div class="addGoodList_item_box">
-      <div
-        class="addGoodList_item"
-        v-for="(item, index) in dataList"
-        :key="index"
-      >
+      <div class="addGoodList_item" v-for="(item, index) in dataList" :key="index">
         <div class="addGoodList_id">{{ item.spec_id }}</div>
         <div class="addGoodList_name">
           <span class="ellipsis">{{ item.spu_title }}</span>
@@ -88,31 +76,31 @@
         <div class="addGoodList_imglist">
           <img
             @click="handeShouImg(item, index, 0)"
-            v-show="item.img_url1 !== null"
+            v-show="item.img_url1 !== null && item.img_url1 !== ''"
             v-lazy="item.img_url1"
             alt
           />
           <img
             @click="handeShouImg(item, index, 1)"
-            v-show="item.img_url2 !== null"
+            v-show="item.img_url2 !== null && item.img_url2 !== ''"
             v-lazy="item.img_url2"
             alt
           />
           <img
             @click="handeShouImg(item, index, 2)"
-            v-show="item.img_url3 !== null"
+            v-show="item.img_url3 !== null && item.img_url3 !== ''"
             v-lazy="item.img_url3"
             alt
           />
           <img
             @click="handeShouImg(item, index, 3)"
-            v-show="item.img_url4 !== null"
+            v-show="item.img_url4 !== null && item.img_url4 !== ''"
             v-lazy="item.img_url4"
             alt
           />
           <img
             @click="handeShouImg(item, index, 4)"
-            v-show="item.img_url5 !== null"
+            v-show="item.img_url5 !== null && item.img_url5 !== ''"
             v-lazy="item.img_url5"
             alt
           />
@@ -130,21 +118,12 @@
               o.size
             }}</el-button>
           </el-tooltip>
-          <el-tooltip
-            effect="dark"
-            content="点击添加"
-            class="item"
-            placement="bottom"
-          >
-            <el-button size="mini" @click="handelListMskAdd(item)"
-              >添加</el-button
-            >
+          <el-tooltip effect="dark" content="点击添加" class="item" placement="bottom">
+            <el-button size="mini" @click="handelListMskAdd(item)">添加</el-button>
           </el-tooltip>
         </div>
         <div class="addGoodList_but">
-          <el-button size="mini" type="primary" @click="DellItem(item)"
-            >修改</el-button
-          >
+          <el-button size="mini" type="primary" @click="DellItem(item)">修改</el-button>
           <el-button size="mini" type="danger" @click="handelItem(item, index)"
             >删除</el-button
           >
@@ -165,11 +144,7 @@
     <div class="itemMask" v-show="itemMask">
       <div class="mask_box">
         <div class="titel">修改商品信息</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="itemMaskArr"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="itemMaskArr">
           <el-form-item label="编号">
             <el-input v-model="itemMaskArr.spec_id" :disabled="true"></el-input>
           </el-form-item>
@@ -210,16 +185,9 @@
     <div class="maskAdd" v-show="listMskAdd">
       <div class="mask_box">
         <div class="titel">添加商品尺寸</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="sizeListAdd"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="sizeListAdd">
           <el-form-item label="尺寸ID">
-            <el-input
-              v-model="sizeListAdd.detal_id"
-              :disabled="true"
-            ></el-input>
+            <el-input v-model="sizeListAdd.detal_id" :disabled="true"></el-input>
           </el-form-item>
           <el-form-item label="商品价格">
             <el-input v-model="sizeListAdd.price"></el-input>
@@ -244,13 +212,9 @@
             </el-tooltip>
           </div>
           <div class="bntWarp">
-            <el-button type="primary" @click="handelListMskAddSucsass"
-              >完成</el-button
-            >
+            <el-button type="primary" @click="handelListMskAddSucsass">完成</el-button>
             <el-button @click="delListMaskAdd">取消</el-button>
-            <el-button type="danger" @click="handelListMskAddSubmit"
-              >提交</el-button
-            >
+            <el-button type="danger" @click="handelListMskAddSubmit">提交</el-button>
           </div>
         </el-form>
       </div>
@@ -258,11 +222,7 @@
     <div class="mask" v-show="listMask">
       <div class="mask_box">
         <div class="titel">修改商品尺寸</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="sizeList"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="sizeList">
           <el-form-item label="尺寸ID">
             <el-input v-model="sizeList.detal_id" :disabled="true"></el-input>
           </el-form-item>
@@ -515,19 +475,23 @@ export default {
       if (this.sizeListAddArr.length === 0) {
         this.$Message.error("请添加商品尺寸");
       } else {
-        const res = await this.$http.post("/api/addSupDetal", {
-          id: this.id,
-          detalId: this.detalId,
-          dataDtal: this.sizeListAddArr,
-        });
-        if (res.data.success === true) {
-          this.getData();
-          this.listMskAdd = false;
-          this.$Message({
-            showClose: true,
-            message: "提交成功",
-            type: "success",
+        if (Number(getStore("dell")) === 1) {
+          const res = await this.$http.post("/api/addSupDetal", {
+            id: this.id,
+            detalId: this.detalId,
+            dataDtal: this.sizeListAddArr,
           });
+          if (res.data.success === true) {
+            this.getData();
+            this.listMskAdd = false;
+            this.$Message({
+              showClose: true,
+              message: "提交成功",
+              type: "success",
+            });
+          }
+        } else {
+          this.$Message.error("对不起，您没有权限");
         }
       }
     },
@@ -742,7 +706,7 @@ export default {
 }
 .addGoodList .addGoodList_item {
   width: 100%;
-  height: 80px;
+  // height: 80px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid $xt;
@@ -750,9 +714,9 @@ export default {
     width: 130px;
     text-align: center;
     line-height: 80px;
-    height: 80px;
-    border-right: 1px solid $xt;
-    
+    // height: 80px;
+    // border-right: 1px solid $xt;
+
     // span{
     //     display: inline-block;
     //     width: 140px;
@@ -761,6 +725,7 @@ export default {
   }
   .addGoodList_but {
     width: 200px;
+    // height: 80px;
   }
   .addGoodList_oldprice {
     width: 100px;
@@ -787,11 +752,11 @@ export default {
   .addGoodList_size {
     flex: 0.8;
     display: flex;
-    // justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     .item {
-      margin-left: 10px;
+      margin: 10px;
     }
   }
   .addGoodList_imglist {
@@ -799,10 +764,11 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     img {
       width: 65px;
       height: 65px;
-      margin: 0 10px;
+      margin: 10px 5px;
       border: 1px solid $xt;
       cursor: pointer;
     }
@@ -844,8 +810,9 @@ export default {
   height: 100%;
   padding: 0 20px;
   overflow: auto;
-  .addGoodList_item_box{
-    border-left:  1px solid $xt;
+  .addGoodList_item_box {
+    border-left: 1px solid $xt;
+    border-right: 1px solid $xt;
   }
   .addGoodList_titel {
     width: 100%;
