@@ -9,11 +9,7 @@
     <div class="top">
       <div class="top-left">
         <!-- //搜索内容 -->
-        <el-input
-          placeholder="请输入内容"
-          v-model="input2"
-          class="input-with-select"
-        >
+        <el-input placeholder="请输入内容" v-model="input2" class="input-with-select">
           <el-button
             slot="append"
             icon="el-icon-search"
@@ -51,19 +47,15 @@
               <div class="time-list-titel-info">备注</div>
               <div class="time-list-titel-operation">操作</div>
             </div>
-            <el-checkbox-group
-              v-model="checkedCities"
-              @change="changeAllDataArr"
-            >
+            <el-checkbox-group v-model="checkedCities" @change="changeAllDataArr">
               <div class="time-list-item" v-for="(o, j) in item.res" :key="j">
                 <div class="time-list-item-nuber desc">
                   <el-checkbox :label="o"></el-checkbox>
                 </div>
-                <div class="time-list-item-nuber desc">{{ o.id }}</div>
-                <div
-                  class="time-list-item-img desc"
-                  @click="shouImgs(index, j)"
-                >
+                <div class="time-list-item-nuber desc">
+                  {{ o.id }}
+                </div>
+                <div class="time-list-item-img desc" @click="shouImgs(item.res, j)">
                   <img v-lazy="o.url" class="img" alt />
                 </div>
                 <div class="time-list-item-url desc">
@@ -148,11 +140,7 @@
     <div class="mask" v-if="mask">
       <div class="mask_box">
         <div class="titel">修改信息</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="info"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="info">
           <el-form-item label="图片信息">
             <el-input v-model="info.info" placeholder="请输入信息"></el-input>
           </el-form-item>
@@ -344,9 +332,9 @@ export default {
       this.img_list = [];
       this.imgMask = false;
     },
-    shouImgs(j) {
+    shouImgs(data, j) {
       let arr = [];
-      this.imgarr.forEach((item) => {
+      data.forEach((item) => {
         arr.push(item.url);
       });
       this.img_list = arr;
@@ -480,7 +468,7 @@ export default {
         page: this.currentPage,
         day1: this.day1,
         day2: this.day2,
-        is:2,
+        is: 2,
       });
       if (res.data.success === true) {
         // this.imgarr=[]
@@ -507,8 +495,7 @@ export default {
 .none {
   width: 300px;
   height: 400px;
-  background: url("https://www.dcmaomi.com:3000/serverImage/search.png")
-    no-repeat;
+  background: url("https://www.dcmaomi.com:3000/serverImage/search.png") no-repeat;
 }
 .mask {
   position: fixed;

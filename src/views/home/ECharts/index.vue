@@ -178,7 +178,7 @@ export default {
 <style lang="scss" scoped>
 .mian_warp {
   width: 100%;
-  height: 400px;
+  height: 100%;
   position: relative;
 }
 .mian {

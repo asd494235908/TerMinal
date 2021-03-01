@@ -296,6 +296,7 @@ export default {
       }
       this.list = [];
       this.formLabelAlign.spec_id = res.data.data + 1;
+      
     },
   },
 };

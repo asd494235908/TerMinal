@@ -5,25 +5,35 @@
     element-loading-text="拼命加载中"
     element-loading-background="rgba(0, 0, 0, 0.8)"
   >
-    <div class="contenert_left">
-      <div class="link_item" v-for="(item, index) in homeList" :key="index">
-        <div class="link_item-titel" @click="changeHeight(item, index)">
-          <i class="iconfont" v-html="item.icon">{{ item.icon }}</i>
-          {{ item.titel }}
-          <i class="el-icon-arrow-down" :class="{ el_icon: item.heigt !== 0 }"></i>
-        </div>
-        <div class="link_items" :style="{ height: item.heigt }">
-          <router-link
-            v-for="(o, i) in item.list"
-            :key="i"
-            class="link_item_list"
-            :class="{ lin_item_active: o.bg === true }"
-            :to="o.link"
-          >
-            <div class="link_item_link" @click="changeColor(o)">
-              {{ o.name }}
-            </div>
-          </router-link>
+    <div class="contenert_left" :class="{ contenert_left_hide: !showleft }">
+      <template v-if="showleft"
+        ><div class="link_item" v-for="(item, index) in homeList" :key="index">
+          <div class="link_item-titel" @click="changeHeight(item, index)">
+            <i class="iconfont" v-html="item.icon">{{ item.icon }}</i>
+            {{ item.titel }}
+            <i class="el-icon-arrow-down" :class="{ el_icon: item.heigt !== 0 }"></i>
+          </div>
+          <div class="link_items" :style="{ height: item.heigt }">
+            <router-link
+              v-for="(o, i) in item.list"
+              :key="i"
+              class="link_item_list"
+              :class="{ lin_item_active: o.bg === true }"
+              :to="o.link"
+            >
+              <div class="link_item_link" @click="changeColor(o)">
+                {{ o.name }}
+              </div>
+            </router-link>
+          </div>
+        </div></template
+      >
+
+      <div class="laer_box">
+        <div class="aa" @click="hanleChckContent">
+          <i
+            :class="{ 'el-icon-arrow-right': !showleft, 'el-icon-arrow-left': showleft }"
+          ></i>
         </div>
       </div>
       <div class="logout" @click="logOut">退出登录</div>
@@ -59,7 +69,8 @@ import { removeStore, getStore } from "@/utils/storage.js";
 export default {
   data() {
     return {
-      loading:false,
+      loading: false,
+      showleft: true,
       homeList: [
         {
           titel: "首页",
@@ -214,9 +225,9 @@ export default {
         message: "欢迎体验，您的身份是管理员",
       });
     }
-    this.$nextTick(()=>{
-      this.loading = false
-    })
+    this.$nextTick(() => {
+      this.loading = false;
+    });
   },
   computed: {
     ...mapState(["navLink"]),
@@ -245,6 +256,9 @@ export default {
   },
   methods: {
     ...mapMutations(["addNavLink", "removeNavLink"]),
+    hanleChckContent() {
+      this.showleft = !this.showleft;
+    },
     logOut() {
       removeStore("token");
       window.location.href = "/";
@@ -295,6 +309,47 @@ export default {
 <style lang="scss">
 @import "@/assets/style/index.scss";
 @import "@/assets/style/theme.scss";
+.laer_box {
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(50%);
+}
+.aa {
+  width: 15px;
+  height: 60px;
+  position: relative;
+  background-color: #000c18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $cf;
+  cursor: pointer;
+}
+.aa::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -15px;
+  left: 0px;
+  border-width: 15px 0 0 15px;
+  border-style: solid;
+  border-color: transparent #000c18 transparent;
+}
+.aa::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -15px;
+  left: 0px;
+  // border-width: 40px 0 0 40px;
+  border-width: 15px 15px 0 0;
+  border-style: solid;
+  // border-color: transparent yellow transparent;
+  border-color: #000c18 transparent transparent;
+}
 .login_beian {
   width: 100%;
   display: flex;
@@ -375,12 +430,18 @@ export default {
   height: 100%;
   display: flex;
   .contenert_left {
-    min-width: 160px;
-    width: 260px;
+    // min-width: 160px;
+    width: 240px;
     background-color: rgb(0, 12, 24);
+    position: relative;
+    transition:  all .5s ease-in-out;
     .link_warp {
       width: 100%;
     }
+  }
+  .contenert_left_hide {
+    width: 0px;
+    // overflow: hidden;
   }
   .contenert_right {
     flex: 1;
@@ -443,6 +504,7 @@ export default {
       border-radius: 0 0 8px 8px;
       background-color: $cf;
       box-shadow: 0px 1px 2px 0px rgba($color: #000000, $alpha: 0.1);
+      background-color: rgb(250, 250, 250);
     }
   }
 }

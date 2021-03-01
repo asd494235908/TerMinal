@@ -1,11 +1,11 @@
 <template>
   <div
     class="imgMask"
-    v-show="imgMask"
     ref="box"
+    v-show="imgMask"
     @mousemove="handelmousemove"
     @mousewheel="navTopSwitch"
-     @mouseup="handelmouseup"
+    @mouseup="handelmouseup"
   >
     <div class="upImg" @click="upImg"><i class="el-icon-arrow-left"></i></div>
     <div class="contnnet">
@@ -21,7 +21,7 @@
           marginLeft: x + 'px',
           marginTop: y + 'px',
           transform: `scale(${sole}) rotate(${deg}deg)`,
-           transition: `${isMove?'':'nome'}`
+          transition: `${isMove ? '' : 'nome'}`,
         }"
         class="img"
         alt
@@ -48,7 +48,7 @@ export default {
       index: 0,
       sole: 1,
       deg: 0,
-      isMove:true,
+      isMove: true,
       isclick: false,
       handel: {
         x: 0,
@@ -69,12 +69,6 @@ export default {
       styleproportion: true,
     };
   },
-  // mounted () {
-  //   window.addEventListener('mousewheel', this.navTopSwitch, false)
-  // },
-  // destroyed: function () {
-  //   window.removeEventListener('mousewheel', this.navTopSwitch, false)
-  // },
   props: {
     //限制缩放最小
     letter_Scale: {
@@ -99,6 +93,7 @@ export default {
     //图片的数组
     img_list: {
       type: Array,
+      default: [],
     },
   },
   computed: {
@@ -114,14 +109,13 @@ export default {
   },
   watch: {
     img_Index(x, y) {
+      console.log(1);
       this.index = this.img_Index;
     },
   },
   methods: {
     //滚轮事件
     navTopSwitch(e) {
-      // if (this.imgMask !== true) return
-      // const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
       if (e.wheelDelta > -120) {
         this.zoomin();
       } else {
@@ -137,7 +131,7 @@ export default {
     //鼠标移动
     handelmousemove(e) {
       if (!this.isclick) return;
-      this.isMove = false
+      this.isMove = false;
       this.move.x = e.pageX;
       this.move.y = e.pageY;
       this.x = this.move.x - this.handel.x + this.julu.x;
@@ -148,13 +142,13 @@ export default {
       this.julu.x = this.x;
       this.julu.y = this.y;
       this.isclick = false;
-      this.isMove = true
+      this.isMove = true;
     },
-    handelmouseup2(){
-       this.julu.x = this.x;
+    handelmouseup2() {
+      this.julu.x = this.x;
       this.julu.y = this.y;
       this.isclick = false;
-      this.isMove = true
+      this.isMove = true;
     },
     initStyle() {
       this.x = 0;
@@ -239,7 +233,6 @@ export default {
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
-    
   }
   .icons {
     position: absolute;
@@ -257,7 +250,7 @@ export default {
     padding: 0 30px;
     border-radius: 30px;
     z-index: 999;
-    i{
+    i {
       cursor: pointer;
     }
   }

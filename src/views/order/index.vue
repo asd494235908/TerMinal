@@ -393,6 +393,7 @@ export default {
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    
     .icon {
       position: absolute;
       top: 10px;

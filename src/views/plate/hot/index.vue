@@ -1,7 +1,7 @@
 <template>
   <div class="hoot_warp">
     <div class="hto_titel">
-      <samp class="iconfont icon" v-html="icon"></samp>{{titel}}
+      <samp class="iconfont icon" v-html="icon"></samp>{{ titel }}
     </div>
     <div class="hot_item_warp">
       <div class="hot_item" v-for="(item, index) in data" :key="index">
@@ -11,7 +11,7 @@
         <p
           class="class_sort"
           style="width: 200px; height: 140px; margintop: 8px"
-          v-show="item.type ===2"
+          v-show="item.type === 2"
         >
           板块图片：<img
             v-lazy="item.hot_img"
@@ -45,11 +45,7 @@
     <div class="mask" v-show="isMask">
       <div class="mask_warp">
         <div class="titel">修改板块信息</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="addData"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="addData">
           <el-form-item label="板块编号">
             <el-input v-model="addData.hot_id" :disabled="true"></el-input>
           </el-form-item>
@@ -82,11 +78,7 @@
             </div>
             <div class="item_warp">
               <el-checkbox-group v-model="list" :max="8">
-                <div
-                  v-for="(item, index) in supInfo"
-                  :key="index"
-                  class="checkbox_warp"
-                >
+                <div v-for="(item, index) in supInfo" :key="index" class="checkbox_warp">
                   <div class="item_checkbox">
                     <el-checkbox
                       :label="item.id"
@@ -138,8 +130,8 @@ export default {
   },
   props: {
     data: Array,
-    titel:String,
-    icon:String,
+    titel: String,
+    icon: String,
   },
   methods: {
     //删除热门板块
@@ -463,6 +455,8 @@ export default {
       cursor: pointer;
       transition: all 0.5s;
       font-size: 16px;
+      background-color: $cf;
+      box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
     }
     .add_item:hover {
       border-color: rgb(64, 158, 255);
@@ -478,6 +472,8 @@ export default {
       transition: all 0.5s;
       cursor: pointer;
       position: relative;
+      background-color: $cf;
+      box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
     }
   }
 }

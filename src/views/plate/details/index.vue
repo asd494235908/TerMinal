@@ -1,8 +1,6 @@
 <template>
   <div class="details_warp">
-    <div class="details_titel">
-      <i class="iconfont icon">&#xe676;</i>详情分类组件管理
-    </div>
+    <div class="details_titel"><i class="iconfont icon">&#xe676;</i>详情分类组件管理</div>
     <div class="detaisl_warp_item">
       <div class="details_item" v-for="(item, index) in data" :key="index">
         <p class="detaisl_titel_1">板块名称: {{ item.activity }}</p>
@@ -12,7 +10,7 @@
           板块图片：<img
             v-lazy="item.hot_img"
             alt=""
-            style="width: 200px; height: 140px ;marginTop: 8px;"
+            style="width: 200px; height: 140px; margintop: 8px"
           />
         </p>
         <p style="text-align: center">板块分类</p>
@@ -29,7 +27,12 @@
               <div class="arr_name">
                 <p class="ellipsis">分类名称：{{ o.spu_title }}</p>
               </div>
-              <img v-lazy="o.list[0].img_url1" alt=""  style="width: 60px; height: 60px; " class="img" />
+              <img
+                v-lazy="o.list[0].img_url1"
+                alt=""
+                style="width: 60px; height: 60px"
+                class="img"
+              />
             </div>
           </el-tooltip>
         </div>
@@ -39,11 +42,7 @@
     <div class="mask" v-show="isMask">
       <div class="mask_warp">
         <div class="titel">修改板块信息</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="addData"
-        >
+        <el-form :label-position="labelPosition" label-width="80px" :model="addData">
           <el-form-item label="板块编号">
             <el-input v-model="addData.hot_id" :disabled="true"></el-input>
           </el-form-item>
@@ -70,11 +69,7 @@
             </div>
             <div class="item_warp">
               <el-checkbox-group v-model="list" :max="8">
-                <div
-                  v-for="(item, index) in supInfo"
-                  :key="index"
-                  class="checkbox_warp"
-                >
+                <div v-for="(item, index) in supInfo" :key="index" class="checkbox_warp">
                   <div class="item_checkbox">
                     <el-checkbox
                       :label="item.id"
@@ -120,13 +115,13 @@ export default {
         type: "1",
       },
       labelPosition: "right",
-    }
+    };
   },
   props: {
     data: Array,
   },
   methods: {
-   isNuber() {
+    isNuber() {
       if (isNaN(this.addData.sort)) {
         this.disebo = true;
         this.addData.sort = "";
@@ -195,29 +190,29 @@ export default {
   }
 }
 .class_arr_warp {
-      display: flex;
-      width: 970px;
-      align-items: center;
-      // justify-content: start;
-      flex-wrap: wrap;
-      margin-top: 20px;
-      .class_arr {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        border: 1px solid $xt;
-        border-radius: 4px;
-        margin: 20px 10px 0;
-        padding: 10px;
-        p {
-          width: 200px !important;
-          text-align: center;
-        }
-        .img {
-          width: 60px;
-          height: 60px;
-          margin-top: 10px;
-        }
-      }
+  display: flex;
+  width: 970px;
+  align-items: center;
+  // justify-content: start;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  .class_arr {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid $xt;
+    border-radius: 4px;
+    margin: 20px 10px 0;
+    padding: 10px;
+    p {
+      width: 200px !important;
+      text-align: center;
     }
+    .img {
+      width: 60px;
+      height: 60px;
+      margin-top: 10px;
+    }
+  }
+}
 </style>

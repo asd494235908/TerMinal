@@ -223,10 +223,12 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 10px auto;
     border: 1px solid $xt;
     border-radius: 4px;
     transition: all 0.5s;
+    background-color: $cf;
+    box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
     .el-icon-plus {
       cursor: pointer;
     }

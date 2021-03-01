@@ -122,8 +122,8 @@ export default {
 @import "@/assets/style/theme.scss";
 .left-content {
   width: 100%;
-  height: 400px;
-  margin-top: 34px;
+  height: 480px;
+  margin-top: 90px;
 }
 .left-top {
   width: 100%;
@@ -196,6 +196,7 @@ export default {
       justify-content: center;
       font-size: 22px;
       box-shadow: 0px 0px 6px 2px rgba(18, 18, 3, 0.1);
+      background-color: $cf;
     }
   }
 }
@@ -295,18 +296,23 @@ export default {
       margin-top: 30px;
     }
     .right-bottom {
-      // margin-top: 60px;
+      width: 100%;
+      height: 100%;
+      // margin-top: 20px;
+      position: relative;
+      top: 20px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      flex-direction: column;
     }
   }
 }
 .warp {
-  position: relative;
-  top: 60px;
+  // position: relative;
+  // top: 60px;
   width: 375px;
-  height: 748px;
+  height: 755px;
   // background-color: red;
   background: url("https://www.dcmaomi.com:3000/serverImage/IPhoneX.png") no-repeat;
   background-size: cover;
@@ -317,7 +323,7 @@ export default {
     width: 325px;
     height: 710px;
     border-radius: 34px;
-    
+
     // border: 1px solid red;
   }
 }

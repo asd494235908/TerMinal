@@ -509,6 +509,8 @@ export default {
   padding: 20px;
   box-sizing: border-box;
   position: relative;
+  background-color: $cf;
+  box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
   p {
     font-size: 14px;
     margin-bottom: 10px;

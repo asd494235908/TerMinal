@@ -29,10 +29,7 @@
     <div class="mask" v-show="isMask">
       <div class="maskbox">
         <div>分类管理</div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="80px"
-          :model="listdetal"
+        <el-form :label-position="labelPosition" label-width="80px" :model="listdetal"
           ><el-form-item label="板块编号">
             <el-input v-model="listdetal.hot_id" :disabled="true"></el-input>
           </el-form-item>
@@ -60,16 +57,9 @@
               v-for="(o, j) in listdetal.listArr"
               :key="j"
             >
-              <el-button size="mini" @click="arrListItem(o)">{{
-                o.hot_name
-              }}</el-button>
+              <el-button size="mini" @click="arrListItem(o)">{{ o.hot_name }}</el-button>
             </el-tooltip>
-            <el-tooltip
-              effect="dark"
-              content="点击添加"
-              class="item"
-              placement="top"
-            >
+            <el-tooltip effect="dark" content="点击添加" class="item" placement="top">
               <el-button size="mini" @click="addArrList">添加</el-button>
             </el-tooltip>
           </div>
@@ -82,11 +72,7 @@
       </div>
       <div class="mask" v-show="isMasklist">
         <div class="maskbox">
-          <el-form
-            :label-position="labelPosition"
-            label-width="80px"
-            :model="maskList"
-          >
+          <el-form :label-position="labelPosition" label-width="80px" :model="maskList">
             <el-form-item label="分类编号">
               <el-input v-model="maskList.hot_id" :disabled="true"></el-input>
             </el-form-item>
@@ -131,7 +117,7 @@ export default {
         hot_link: "",
         hot_img: "",
         id: "",
-        icon:''
+        icon: "",
       },
       listdetal: {
         listArr: [],
@@ -367,6 +353,8 @@ export default {
   cursor: pointer;
   transition: all 0.5s;
   font-size: 16px;
+  background-color: $cf;
+  box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
 }
 .add_item:hover {
   border-color: rgb(64, 158, 255);
@@ -392,6 +380,8 @@ export default {
     transition: all 0.5s;
     cursor: pointer;
     position: relative;
+    background-color: $cf;
+    box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
     .class_mask {
       display: none;
       position: absolute;

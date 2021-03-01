@@ -279,6 +279,8 @@ export default {
     border-radius: 4px;
     box-sizing: border-box;
     cursor: pointer;
+    background-color: $cf;
+    box-shadow: 0px 0px 4px 1px rgba(18, 18, 3, 0.05);
     .img_sort {
       font-size: 16px;
       margin-bottom: 10px;
