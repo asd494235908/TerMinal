@@ -36,7 +36,7 @@
           ></i>
         </div>
       </div>
-      <div class="logout" @click="logOut">退出登录</div>
+      <div class="logout" @click="logOut" v-if="showleft">退出登录</div>
     </div>
     <div class="contenert_right">
       <div class="contenert_right_top">
@@ -430,8 +430,8 @@ export default {
   height: 100%;
   display: flex;
   .contenert_left {
-    // min-width: 160px;
-    width: 240px;
+    min-width: 230px;
+    width: 230px;
     background-color: rgb(0, 12, 24);
     position: relative;
     transition:  all .5s ease-in-out;
@@ -441,6 +441,7 @@ export default {
   }
   .contenert_left_hide {
     width: 0px;
+    min-width: 0px;
     // overflow: hidden;
   }
   .contenert_right {
