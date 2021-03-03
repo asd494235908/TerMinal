@@ -91,7 +91,7 @@
             </p>
             <p>
               Github DM商城源码：<a
-                href="https://github.com/asd494235908/DcPay"
+                href="https://github.com/asd494235908/Dm"
                 target="_blank"
                 >前端</a
               >
@@ -151,18 +151,99 @@
           </div>
         </div>
       </div>
+      <div class="work_init">
+        <div class="work_init_contnet">
+          <div class="work_top">
+            <p class="titel">工作进度</p>
+            <p class="name">Mike</p>
+          </div>
+          <div class="work_bottom">
+            <div class="work_item">
+              <div class="work_num">1</div>
+              <div class="work_name">DM商城</div>
+              <div class="work_progress"><span class="color1">90%</span></div>
+              <div class="work_link">
+                <a href="https://www.dcmaomi.com" target="_blank" class="color1"
+                  ><i class="el-icon-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work_item">
+              <div class="work_num">2</div>
+              <div class="work_name">DcPay</div>
+              <div class="work_progress"><span class="color2">90%</span></div>
+              <div class="work_link">
+                <a href="https://dcpay.dcmaomi.com" target="_blank" class="color2"
+                  ><i class="el-icon-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work_item">
+              <div class="work_num">3</div>
+              <div class="work_name">DM商城移动端</div>
+              <div class="work_progress"><span class="color3">90%</span></div>
+              <div class="work_link">
+                <a href="https://dmh5.dcmaomi.com/" target="_blank" class="color3"
+                  ><i class="el-icon-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work_item">
+              <div class="work_num">4</div>
+              <div class="work_name">DM后台管理</div>
+              <div class="work_progress"><span class="color4">90%</span></div>
+              <div class="work_link">
+                <a href="https://tm.dcmaomi.com/" target="_blank" class="color4"
+                  ><i class="el-icon-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work_item">
+              <div class="work_num">5</div>
+              <div class="work_name">下载APP</div>
+              <div class="work_progress"><span class="color5">90%</span></div>
+              <div class="work_link">
+                <a href="https://tm.dcmaomi.com/" target="_blank" class="color5"
+                  ><i class="el-icon-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="right">
       <div class="right-top">
         <my-tianqi></my-tianqi>
       </div>
       <div class="right-bottom">
-        <div class="warp">
+        <div class="warp_shhouji">
           <iframe
             src="https://dmh5.dcmaomi.com/"
             frameborder="3"
             class="contennet"
           ></iframe>
+        </div>
+      </div>
+      <div class="wark">
+        <div class="wark_content">
+          <div class="wark_content_titel">
+            <p class="name">Mike</p>
+            <p class="name_desc">work</p>
+          </div>
+          <el-steps direction="vertical" :active="wark_step.length">
+            <el-step
+              v-for="(item, index) in wark_step"
+              :key="index + item.title"
+              :title="item.title"
+              :description="item.description"
+            ></el-step>
+          </el-steps>
+        </div>
+      </div>
+      <div class="more">
+        <div class="more_content">
+          <img src="../../../public/static/images/qqimg.png" alt="">
         </div>
       </div>
     </div>
@@ -177,6 +258,28 @@ import { getStore } from "@/utils/storage.js";
 export default {
   data() {
     return {
+      wark_step: [
+        {
+          title: "September 2020",
+          description: "Upload DM mall mobile terminal (uni-app) to server",
+        },
+        {
+          title: "First submitted in October 2020",
+          description: "Upload to server",
+        },
+        {
+          title: "November 2020",
+          description: "Upload DM mall to server",
+        },
+        {
+          title: "December 2020",
+          description: "Upload DCPAY to server",
+        },
+        {
+          title: "Up to now",
+          description: "Maintain this project",
+        },
+      ],
       num: 5000,
       userNmun: 0,
       orderNum: 0,
@@ -280,6 +383,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/style/theme.scss";
+
 .left-content {
   width: 100%;
   height: 640px;
@@ -373,6 +477,118 @@ export default {
     }
   }
 }
+.work_init {
+  width: 100%;
+  margin-top: 30px;
+  // margin-buttom: 30px;
+  padding-bottom: 30px;
+}
+.work_init_contnet {
+  flex: 1;
+  height: 380px;
+  margin: 0 20px;
+  box-shadow: 0px 0px 6px 2px rgba(18, 18, 3, 0.1);
+  background-color: $cf;
+  border-radius: 4px;
+
+  .work_bottom {
+    width: 100%;
+    height: 320px;
+    margin-top: 20px;
+    .work_item:hover {
+      background-color: $ee;
+    }
+    .work_item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      .work_num,
+      .work_name,
+      .work_progress,
+      .work_link {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid $xt;
+      }
+      .work_num {
+        flex: 1;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+      }
+      .work_name {
+        flex: 1;
+      }
+      .work_progress {
+        flex: 1;
+        justify-content: center;
+        span {
+          display: inline-block;
+          padding: 4px 10px;
+          border-radius: 20px;
+          color: $cf;
+        }
+        .color1 {
+          background-color: #ff6c60;
+        }
+        .color2 {
+          background-color: #ff5e9c;
+        }
+        .color3 {
+          background-color: #ff9b3e;
+        }
+        .color4 {
+          background-color: #ff5f6d;
+        }
+        .color5 {
+          background-color: #5571fe;
+        }
+      }
+      .work_link {
+        flex: 1;
+        justify-content: flex-end;
+        padding-right: 20px;
+        i{
+          font-size: 22px;
+        }
+        .color1 {
+          color: #ff6c60;
+        }
+        .color2 {
+          color: #ff5e9c;
+        }
+        .color3 {
+          color: #ff9b3e;
+        }
+        .color4 {
+          color: #ff5f6d;
+        }
+        .color5 {
+          color: #5571fe;
+        }
+      }
+    }
+  }
+
+  .work_top {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  .titel {
+    font-size: 22px;
+    color: chocolate;
+  }
+  .name {
+    color: $c9;
+  }
+}
 .left-bottom {
   // flex: 1;
   width: 100%;
@@ -406,6 +622,7 @@ export default {
         height: 240px;
       }
       .laer_item:hover {
+        background-color: $ee;
         .laer_icon {
           i {
             color: coral;
@@ -428,6 +645,7 @@ export default {
             font-size: 22px;
             color: $c9;
             transition: all 0.3s ease-in-out;
+            cursor: pointer;
           }
           .icon {
             font-size: 28px;
@@ -443,7 +661,7 @@ export default {
         .laer_num {
           width: 26px;
           height: 26px;
-          
+
           color: $cf;
           display: flex;
           align-items: center;
@@ -462,7 +680,6 @@ export default {
         .laer_num_4 {
           background-color: rgb(73, 236, 168);
         }
-        
       }
       .info_titel {
         display: flex;
@@ -585,33 +802,69 @@ export default {
   }
   .right {
     width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     .right-top {
       flex: 1;
+      margin-top: 20px;
       display: flex;
       align-items: center;
-      margin-top: 30px;
     }
     .right-bottom {
       width: 100%;
-      height: 100%;
-      position: relative;
-      top: 20px;
+      margin-top: 30px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
       flex-direction: column;
     }
+    .more {
+      width: 100%;
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .more_content {
+        width: 90%;
+        height: 264px;
+        background-color: $cf;
+        border-radius: 4px;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 6px 2px rgba(18, 18, 3, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .wark {
+      width: 100%;
+      margin-top: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .wark_content {
+        width: 90%;
+        background-color: $cf;
+        border-radius: 4px;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 6px 2px rgba(18, 18, 3, 0.1);
+        .wark_content_titel {
+          width: 100%;
+          height: 70px;
+        }
+        .name {
+          font-size: 22px;
+        }
+        .name_desc {
+          color: $c9;
+        }
+      }
+    }
   }
 }
-.warp {
-  // position: relative;
-  // top: 60px;
+.warp_shhouji {
   width: 375px;
   height: 755px;
-  // background-color: red;
   background: url("https://www.dcmaomi.com:3000/serverImage/IPhoneX.png") no-repeat;
   background-size: cover;
   display: flex;

@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import { Dropdown,DropdownItem,DropdownMenu ,Option,Select,DatePicker,Button, Input, Form, FormItem, Tabs, TabPane, Tooltip, CheckboxGroup, Checkbox, Upload, Loading,Dialog,Pagination } from 'element-ui'
+import { Step,Steps,Dropdown,DropdownItem,DropdownMenu ,Option,Select,DatePicker,Button, Input, Form, FormItem, Tabs, TabPane, Tooltip, CheckboxGroup, Checkbox, Upload, Loading,Dialog,Pagination } from 'element-ui'
 
+Vue.use(Step)
+Vue.use(Steps)
 Vue.use(Button)
 Vue.use(Input)
 Vue.use(Form)
