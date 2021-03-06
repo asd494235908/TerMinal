@@ -30,7 +30,7 @@
     - [Element](https://element.eleme.cn/#/zh-CN)：Element-UI 组件库
     - 第三方接口
     - [中国天气网](https://cj.weather.com.cn/plugin/standard)：中国天气网 天气插件
-### 后端所用技术 [后端](https://github.com/asd494235908/DM-Server) 
+### 后端所用技术 [后端 TerMinal-serve](https://github.com/asd494235908/TerMinal-serve) 
 - 主要
    - [Node Js](https://nodejs.org/zh-cn/)：Node.js
    - [express](https://www.expressjs.com.cn/)：基于 Node.js 平台， Web 开发框架
@@ -47,7 +47,7 @@
   - [Apache](http://httpd.apache.org/)
 
 ### 本地运行
-- 前后端分离请先运行[后端](https://github.com/asd494235908/DM-Server)
+- 前后端分离请先运行[后端](https://github.com/asd494235908/TerMinal-serve)
 - node.js 版本(v12.18.3) 
 - vue-cli 版本(@vue/cli 4.5.4)
 - 下载zip直接解压或安装git后执行克隆命令 `https://github.com/asd494235908/TerMinal.git`
