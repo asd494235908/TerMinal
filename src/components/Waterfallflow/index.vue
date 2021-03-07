@@ -99,7 +99,7 @@ export default {
         return;
       }
     },
-    Img_arr() {
+    Img_arr(x, y) {
       //开始加载
       this.$emit("start_img");
       //传入的数组发生变化时显示加载遮罩层
@@ -168,7 +168,7 @@ export default {
         //节流
         clearTimeout(this.timer2);
         // 滚动时会发生样式错乱Bug 滚动时候矫正样式
-        this.damo();
+        // this.damo();
         this.timer2 = setTimeout(() => {
           if (this.maxImg === this.Img_arr.length) {
             //显示加载完毕  rerun出加载事件
@@ -192,12 +192,14 @@ export default {
       this.$emit("ImgClick", index);
     },
     //清除样式
-    clearInit() {
-      let imgs = this.$refs.img;
-      imgs.forEach((item) => {
-        item.style.top = "";
-        item.style.left = "";
-        item.style.marginLeft = "";
+     clearInit() {
+      //  this.$nextTick(() => {
+        let imgs = this.$refs.img;
+        imgs.forEach((item) => {
+          item.style.top = "";
+          item.style.left = "";
+          item.style.marginLeft = "";
+        // });
       });
     },
     //窗口发生变动时 修改样式
@@ -245,7 +247,7 @@ export default {
           imgs[i].style.top = arr[index] + margin + imgs[index].offsetTop + "px";
           //获取最大高度
           this.max =
-            arr[index] + margin + imgs[index].offsetTop + this.getImgInfo(index) + 300;
+            arr[index] + margin + imgs[index].offsetTop + this.getImgInfo(index) - 100;
           //把图片第I个的left值 设置为最小高度图片的left值
           imgs[i].style.left = imgs[index].offsetLeft + 1 + "px";
 
@@ -325,6 +327,7 @@ export default {
   width: 100%;
   margin-top: 30px;
   padding-top: 6px;
+  padding-bottom: 30px;
   height: 800px;
   position: relative;
   overflow: auto;

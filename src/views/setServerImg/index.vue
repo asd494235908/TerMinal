@@ -205,6 +205,7 @@ export default {
           arr[index].res.push(oldData);
         }
       });
+      console.log(arr)
       return arr;
     },
   },
@@ -402,13 +403,15 @@ export default {
         day2: this.day2,
         is: 1,
       });
+      // console.log(res)
       if (res.data.success === true) {
-        // this.imgarr=[]
-        this.$nextTick(() => {
+        this.imgarr=[]
+        // this.$nextTick(() => {
           this.imgarr = res.data.data;
+          // console.log(this.imgarr)
           this.allData = res.data.max;
           this.loading = false;
-        });
+        // });
       }
     },
   },
