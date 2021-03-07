@@ -2,7 +2,7 @@
 [![](https://img.shields.io/badge/version-1.0-brightgreen)](https://github.com/asd494235908/TerMinal)
 [![GitHub stars](https://img.shields.io/github/stars/asd494235908/TerMinal.svg?style=social&label=Stars)](https://github.com/asd494235908/TerMinal)
 [![GitHub forks](https://img.shields.io/github/forks/asd494235908/TerMinal.svg?style=social&label=Fork)](https://github.com/asd494235908/TerMinal)
- - [若图片显示不完整请跳转码云](https://gitee.com/dcmaomi/Dm)
+ - [若图片显示不完整请跳转码云](https://gitee.com/dcmaomi/TerMinal)
 ### 项目已部署，在线Demo
 - 后台管理系统：https://tm.dcmaomi.com
 - Dcpay前台：https://dcpay.dcmaomi.com

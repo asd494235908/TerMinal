@@ -3,7 +3,7 @@
     class="warp"
     ref="setimg"
     v-loading="loading"
-    element-loading-text="拼命加载中"
+    element-loading-text="拼命加载中(为了图片质量加载时间过长)"
     element-loading-background="rgba(255, 255, 255, 1)"
   >
     <div class="top">
