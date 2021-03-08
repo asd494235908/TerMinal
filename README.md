@@ -17,7 +17,7 @@
 - 体统日志
 - 上传图片
 - 首页导航栏可后台配置
-- 添加东验证码
+- 添加登录验证码
 ### 功能模块图
 ![首页](https://www.dcmaomi.com:3010/serverImage/20210305011146_16923.png)
 ![上传商品](https://www.dcmaomi.com:3010/serverImage/20210305011146_11931.png)
