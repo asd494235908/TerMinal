@@ -76,31 +76,31 @@
         <div class="addGoodList_imglist">
           <img
             @click="handeShouImg(item, index, 0)"
-            v-show="item.img_url1 !== null && item.img_url1 !== ''"
+            v-show="item.img_url1 !== null && item.img_url1 !== '' && item.img_url1 !== 'NULL'"
             v-lazy="item.img_url1"
             alt
           />
           <img
             @click="handeShouImg(item, index, 1)"
-            v-show="item.img_url2 !== null && item.img_url2 !== ''"
+            v-show="item.img_url2 !== null && item.img_url2 !== '' && item.img_url2 !== 'NULL'"
             v-lazy="item.img_url2"
             alt
           />
           <img
             @click="handeShouImg(item, index, 2)"
-            v-show="item.img_url3 !== null && item.img_url3 !== ''"
+            v-show="item.img_url3 !== null && item.img_url3 !== '' && item.img_url3 !== 'NULL'"
             v-lazy="item.img_url3"
             alt
           />
           <img
             @click="handeShouImg(item, index, 3)"
-            v-show="item.img_url4 !== null && item.img_url4 !== ''"
+            v-show="item.img_url4 !== null && item.img_url4 !== ''&& item.img_url4 !== 'NULL'"
             v-lazy="item.img_url4"
             alt
           />
           <img
             @click="handeShouImg(item, index, 4)"
-            v-show="item.img_url5 !== null && item.img_url5 !== ''"
+            v-show="item.img_url5 !== null && item.img_url5 !== ''&& item.img_url5 !== 'NULL'"
             v-lazy="item.img_url5"
             alt
           />
@@ -334,6 +334,7 @@ export default {
     },
     //显示图片
     handeShouImg(item, index, j) {
+    console.log(item)
       this.img_Index = j;
       let arr = [];
       for (const i in item) {
@@ -738,6 +739,9 @@ export default {
   }
   .addGoodList_name {
     width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .addGoodList_hot span {
     display: inline-block;
