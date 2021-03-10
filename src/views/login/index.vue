@@ -65,8 +65,8 @@ export default {
       text: 0,
       input3: "",
       userInfo: {
-        username: "admin",
-        pwd: "admin",
+        username: "",
+        pwd: "",
       },
     };
   },
