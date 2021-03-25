@@ -33,7 +33,7 @@
         </div>
         <div class="verification">
           <div class="left">
-            <input type="number" maxlength="20" v-model="input3" />
+            <input type="number" maxlength="20" v-model="input3" @keyup.enter="logIn" />
           </div>
           <div class="right" v-html="svg"></div>
         </div>
@@ -98,7 +98,6 @@ export default {
       const res = await this.$http.post("/api/verification");
       this.svg = res.data.data;
       this.text = Number(res.data.text);
-      this.input3 = this.text;
     },
     pwdOnfocus() {
       this.isPwd = true;

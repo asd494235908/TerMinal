@@ -59,7 +59,7 @@
                   <img v-lazy="o.url" class="img" alt />
                 </div>
                 <div class="time-list-item-url desc">
-                  <span>{{ o.url }}</span>
+                  <span class="ellipsis">{{ o.url }}</span>
                   <el-button
                     size="mini"
                     class="copy"
@@ -574,6 +574,7 @@ export default {
           display: flex;
           align-items: center;
           justify-content: center;
+          cursor: pointer;
           .img {
             width: 90px;
             height: 90px;
@@ -581,6 +582,9 @@ export default {
           }
         }
         .time-list-item-url {
+          .ellipsis {
+            width: 60%;
+          }
           flex: 1;
           .copy {
             margin-left: 20px;
